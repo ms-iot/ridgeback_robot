@@ -45,7 +45,11 @@
 #include "hardware_interface/robot_hw.h"
 #include "ros/ros.h"
 #include "sensor_msgs/JointState.h"
+#ifdef WIN32
+#include "puma_motor_driver/peakcan_gateway.h"
+#else
 #include "puma_motor_driver/socketcan_gateway.h"
+#endif
 #include "puma_motor_driver/driver.h"
 #include "puma_motor_driver/multi_driver_node.h"
 #include "puma_motor_msgs/MultiFeedback.h"

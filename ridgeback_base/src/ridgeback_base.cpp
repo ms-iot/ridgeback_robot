@@ -131,7 +131,11 @@ int main(int argc, char* argv[])
 
   std::string canbus_dev;
   pnh.param<std::string>("canbus_dev", canbus_dev, "can0");
-  puma_motor_driver::SocketCANGateway gateway(canbus_dev);
+  #ifdef WIN32
+    puma_motor_driver::PeakCANGateway gateway(canbus_dev);
+  #else
+    puma_motor_driver::SocketCANGateway gateway(canbus_dev);
+  #endif
 
   ridgeback_base::RidgebackHardware ridgeback(nh, pnh, gateway);
 
