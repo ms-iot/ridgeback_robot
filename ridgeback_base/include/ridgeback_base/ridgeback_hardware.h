@@ -37,6 +37,9 @@
 
 #include <vector>
 
+#include <boost/asio.hpp>
+#include <boost/bind.hpp>
+#include <boost/thread.hpp>
 #include "boost/thread.hpp"
 #include "boost/foreach.hpp"
 #include "boost/shared_ptr.hpp"
@@ -46,7 +49,7 @@
 #include "ros/ros.h"
 #include "sensor_msgs/JointState.h"
 #ifdef WIN32
-#include "puma_motor_driver/peakcan_gateway.h"
+#include "puma_motor_driver/slcan_gateway.h"
 #else
 #include "puma_motor_driver/socketcan_gateway.h"
 #endif

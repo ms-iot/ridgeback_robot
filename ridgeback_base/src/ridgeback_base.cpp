@@ -130,10 +130,11 @@ int main(int argc, char* argv[])
 
 
   std::string canbus_dev;
-  pnh.param<std::string>("canbus_dev", canbus_dev, "can0");
   #ifdef WIN32
-    puma_motor_driver::PeakCANGateway gateway(canbus_dev);
+    pnh.param<std::string>("canbus_dev", canbus_dev, "192.168.131.2");
+    puma_motor_driver::SLCANGateway gateway(canbus_dev);
   #else
+    pnh.param<std::string>("canbus_dev", canbus_dev, "can0");
     puma_motor_driver::SocketCANGateway gateway(canbus_dev);
   #endif
 
